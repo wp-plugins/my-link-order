@@ -6,7 +6,7 @@ Plugin Name: My Link Order
 
 Plugin URI: http://www.geekyweekly.com/mylinkorder
 
-Description: A Wordpress plugin to finally let you set the explicit order of links and link categories.
+Description: My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes.
 
 Version: 2.5
 
