@@ -4,14 +4,15 @@ Donate link: http://geekyweekly.com/mylinkorder
 Tags: link, category, categories, order, sidebar, widget
 Requires at least: 2.5
 Tested up to: 2.5
-Stable tag: trunk
+Stable tag: 2.5
 
-My Link Order allows you to set the order in which links and link categories will appear in the sidebar.
+My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag 
+and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes.
 
 == Description ==
 
-My Link Order allows you to set the order in which links and link categories will appear in the sidebar. 
-The widget that gets installed includes more options than the built in widget. 
+My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag 
+and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes.
 
 
 == Installation ==
