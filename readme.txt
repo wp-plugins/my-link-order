@@ -2,7 +2,7 @@
 Contributors: froman118
 Donate link: http://geekyweekly.com/mylinkorder
 Tags: link, category, categories, order, sidebar, widget
-Requires at least: 2.3
+Requires at least: 2.5
 Tested up to: 2.5
 Stable tag: 2.3.2
 
