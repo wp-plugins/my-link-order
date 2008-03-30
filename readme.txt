@@ -10,8 +10,8 @@ My Category Order allows you to set the order in which categories will appear in
 
 == Description ==
 
-My Category Order allows you to set the order in which categories will appear in the sidebar. The widget that
-gets installed includes more options than the built in widget. 
+My Category Order allows you to set the order in which categories will appear in the sidebar. Uses a drag 
+and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes.
 
 
 == Installation ==
