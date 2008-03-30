@@ -2,9 +2,9 @@
 Contributors: froman118
 Donate link: http://geekyweekly.com/mylinkorder
 Tags: link, category, categories, order, sidebar, widget
-Requires at least: 2.5
+Requires at least: 2.3.2
 Tested up to: 2.5
-Stable tag: 2.3.2
+Stable tag: 2.5
 
 My Link Order allows you to set the order in which links and link categories will appear in the sidebar.
 
