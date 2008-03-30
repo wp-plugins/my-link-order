@@ -3,7 +3,7 @@
 Plugin Name: My Category Order
 Plugin URI: http://www.geekyweekly.com/mycategoryorder
 Description: A Wordpress plugin to finally let you set the explicit order of post categories.
-Version: 2.3.2
+Version: 2.5
 Author: froman118
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
