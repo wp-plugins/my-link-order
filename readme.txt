@@ -1,4 +1,4 @@
-My Category Order
+=== My Category Order ===
 Contributors: froman118
 Donate link: http://geekyweekly.com/mycategoryorder
 Tags: categories, category, order, sidebar, widget
