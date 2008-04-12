@@ -190,7 +190,8 @@ else
 			
 			wp_list_bookmarks(array(
 					'orderby' => 'order', 'category_orderby' => 'order',
-					'title_before' => $before_title, 'title_after' => $after_title, 
+					'title_before' => $before_title, 'title_after' => $after_title,
+					'category_before' => $before_widget, 'category_after' => $after_widget, 
 					'class' => 'linkcat widget','show_images' => $i,
 					'show_description' => $d,'show_rating' => $r,'show_updated' => $u, 
 					'categorize' => $c, 'title_li' => $cat_title)); 
@@ -220,6 +221,7 @@ else
 	$cat_title = attribute_escape($options['cat_title']);
 	
 ?>
+
 	    
 	<p style="text-align:left; float:left;"><label for="show_images"><?php _e('Show Images?'); ?>&nbsp;<input class="checkbox" type="checkbox" <?php echo $show_images; ?> id="show_images" name="show_images" /></label></p>
 	    
