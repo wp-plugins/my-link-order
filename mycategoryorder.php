@@ -220,6 +220,7 @@ function mycategoryorder_init() {
 		$mco_dropdown = $options['dropdown'] ? 'checked="checked"' : '';
 		$mco_empty = $options['hide_empty'] ? 'checked="checked"' : '';
 		$mco_update = $options['update'] ? 'checked="checked"' : '';
+		$mco_title = attribute_escape($options['title']);
 		$mco_feedtext = attribute_escape($options['feedtext']);
 		$mco_feedimage = attribute_escape($options['feedimage']);
 		$mco_exclude = attribute_escape($options['exclude']);
