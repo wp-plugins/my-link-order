@@ -3,7 +3,7 @@
 Plugin Name: My Link Order
 Plugin URI: http://www.geekyweekly.com/mylinkorder
 Description: My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes.
-Version: 2.5
+Version: 2.5.1
 Author: froman118
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
@@ -187,12 +187,15 @@ else
 			$u = $options['show_updated'] ? '1' : '0';
 			$c = $options['categorize'] ? '0' : '1';
 			$cat_title = $options['cat_title'];
+			$b = $options['between'];
+			if($b == '')
+				$b = '\n';
 			
 			wp_list_bookmarks(array(
 					'orderby' => 'order', 'category_orderby' => 'order',
 					'title_before' => $before_title, 'title_after' => $after_title,
 					'category_before' => $before_widget, 'category_after' => $after_widget, 
-					'class' => 'linkcat widget','show_images' => $i,
+					'class' => 'linkcat widget','show_images' => $i, 'between' => $b,
 					'show_description' => $d,'show_rating' => $r,'show_updated' => $u, 
 					'categorize' => $c, 'title_li' => $cat_title)); 
 		}
@@ -208,6 +211,7 @@ else
 		$newoptions['show_updated'] = isset($_POST['show_updated']);
 		$newoptions['categorize'] = isset($_POST['categorize']);
 		$newoptions['cat_title'] = strip_tags(stripslashes($_POST['cat_title']));
+		$newoptions['between'] = addslashes($_POST['between']);
 	}
 	if ( $options != $newoptions ) {
 	    $options = $newoptions;
@@ -219,6 +223,7 @@ else
 	$show_updated = $options['show_updated'] ? 'checked="checked"' : '';
 	$categorize = $options['categorize'] ? 'checked="checked"' : '';
 	$cat_title = attribute_escape($options['cat_title']);
+	$between = $options['between'];
 	
 ?>
 
@@ -233,7 +238,9 @@ else
 	
 		<p style="clear:both; text-align:right;"><label for="categorize"><?php _e('Uncategorized?'); ?>&nbsp;<input class="checkbox" type="checkbox" <?php echo $categorize; ?> id="categorize" name="categorize" /></label></p>
 	
-	<p style="text-align:right;"><label for="cat_title"><?php _e('Title (only used if Uncategorized is checked):'); ?><br /><input style="width: 250px;" id="cat_title" name="cat_title" type="text" value="<?php echo $cat_title; ?>" /></label></p>
+	<p style="text-align:right;"><label for="cat_title"><?php _e('Title (used if Uncategorized is checked):'); ?><br /><input style="width: 250px;" id="cat_title" name="cat_title" type="text" value="<?php echo $cat_title; ?>" /></label></p>
+	
+		<p style="text-align:right;"><label for="between"><?php _e('Between (text between link and description):'); ?><br /><input style="width: 250px;" id="between" name="between" type="text" value="<?php echo $between; ?>" /></label></p>
 
 	    <input type="hidden" id="menu-submit" name="menu-submit" value="1" />
 <?php
