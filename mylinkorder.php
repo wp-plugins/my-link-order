@@ -189,7 +189,7 @@ else
 			$cat_title = $options['cat_title'];
 			$b = $options['between'];
 			if($b == '')
-				$b = '\n';
+				$b = "\n";
 			
 			wp_list_bookmarks(array(
 					'orderby' => 'order', 'category_orderby' => 'order',
