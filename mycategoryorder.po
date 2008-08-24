@@ -1,0 +1,153 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: My Category Order\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-24 15:40-0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Andrew <froman118@gmail.com>\n"
+"Language-Team: froman118 <froman118@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\Documents and Settings\\froman\\My Documents\\Wordpress\\My Category Order\\trunk\n"
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:150
+msgid "Categories"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:171
+msgid "Select Category"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:229
+msgid "Title:"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:234
+msgid "Show as Drop Down"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:238
+msgid "Show Post Counts"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:242
+msgid "Show Hierarchy"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:246
+msgid "Show Update Date"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:250
+msgid "Show Empty"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:253
+msgid "Feed Text:"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:257
+msgid "Feed Image URL:"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:260
+msgid "Example: copy this icon icon,"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:263
+msgid "Exclude:"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:267
+msgid "Include:"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:312
+msgid "Error while writing to the file"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:314
+msgid "File"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:314
+msgid "has been patched successfully"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:319
+msgid "The file"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:319
+msgid "is not writable"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:320
+msgid "You have 2 options"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:321
+msgid "Change the permissions on the file and click on My Link Order again to patch it automatically"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:322
+msgid "Modify the file manually"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:323
+msgid "After line number"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Category
+#: Order\trunk/mycategoryorder.php:325
+msgid "add the following code:"
+msgstr ""
+

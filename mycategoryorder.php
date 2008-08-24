@@ -2,8 +2,8 @@
 /*
 Plugin Name: My Category Order
 Plugin URI: http://www.geekyweekly.com/mycategoryorder
-Description: My Category Order allows you to set the order in which categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes.
-Version: 2.5.1
+Description: My Category Order allows you to set the order in which categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes. Visit the My Link Order page after updating Wordpress to apply essential file patches.
+Version: 2.6.1
 Author: froman118
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
@@ -11,23 +11,22 @@ Author Email: froman118@gmail.com
 
 function mycategoryorder_init() {
 
-    function mycategoryorder_menu()
-    {   if (function_exists('add_submenu_page')) {
-	$location = "../wp-content/plugins/";
-	add_submenu_page("edit.php", 'My Category Order', 'My Category Order', 2,"mycategoryorder",'mycategoryorder');
-    }
+function mycategoryorder_menu()
+{   
+	if (function_exists('add_submenu_page'))
+		add_submenu_page("edit.php", 'My Category Order', 'My Category Order', 2,"mycategoryorder",'mycategoryorder');
+}
 
-    }
-    function mycategoryorder_js_libs() {
-	if ( $_GET['page'] == "mycategoryorder" ) {
-	    wp_enqueue_script('scriptaculous');
-	} 
-    }
-    add_action('admin_menu', 'mycategoryorder_menu');
-    add_action('admin_menu', 'mycategoryorder_js_libs');
+function mycategoryorder_js_libs() {
+	if ( $_GET['page'] == "mycategoryorder" )
+		wp_enqueue_script('scriptaculous');
+}
 
-    function mycategoryorder()
-    {
+add_action('admin_menu', 'mycategoryorder_menu');
+add_action('admin_menu', 'mycategoryorder_js_libs');
+
+function mycategoryorder()
+{
 
 	global $wpdb;
 	$mode = "";
@@ -279,7 +278,58 @@ wp_register_widget_control('mycategoryorder', 'My Category Order', 'wp_widget_my
 
 }
 
-/* Delays plugin execution until Dynamic Sidebar has loaded first. */
 add_action('plugins_loaded', 'mycategoryorder_init');
+add_action('init', 'mycategoryorder_loadtranslation');
+
+function mycategoryorder_loadtranslation() {
+	load_plugin_textdomain('mycategoryorder', PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)), dirname(plugin_basename(__FILE__)));
+}
+
+function mycategoryorder_check_taxonomy_file() {
+	$path = ABSPATH . WPINC ;
+	$filename = 'taxonomy.php';
+	$fullfilename = $path.'/'.$filename;
+	$message = '';
+	$error = 0;
+	$string = file_get_contents($fullfilename);
+	$line_number = 0;
+	$searched_line = '$orderby = \'t.term_group\';'."\n\t".'else'."\n";
+	$position = 0;
+	$replace = '$orderby = \'t.term_group\';
+	else if ( \'order\' == $orderby )
+		$orderby = \'t.term_order\';'."\n\t".'else'."\n";
+
+	// Search
+	if (strpos($string,'t.term_order')===false) {
+		$position = strpos($string, $searched_line);
+		$line_number = substr_count(  substr($string, 0, $position)   ,"\n")+1;
+
+		// Patch the file if it's writable
+		if (is_writable($path.'/'.$filename)) {// patch the files
+			$handle = fopen($fullfilename, "wb");
+			$string = str_replace($searched_line, $replace, $string);
+			if (!fwrite($handle, $string)) 
+				$message = __('Error while writing to the file', 'mycategoryorder').' '.$fullfilename.'.';
+			else
+				$message = __('File', 'mycategoryorder').'&nbsp;<b>'.$fullfilename.'</b>&nbsp;'.__('has been patched successfully', 'mycategoryorder').'.';
+
+			fclose($handle);
+		}
+		else { // Or throw a message to the user
+			$message  = __('The file', 'mycategoryorder').'&nbsp;<b>'.$fullfilename.'</b>&nbsp;'. __('is not writable', 'mycategoryorder').'.<br/>';
+			$message .= __('You have 2 options', 'mycategoryorder').':<br/>';
+			$message .= '1. '.__('Change the permissions on the file and click on My Link Order again to patch it automatically', 'mycategoryorder').'.<br/>';
+			$message .= '2. '.__('Modify the file manually', 'mycategoryorder').' :<br/>';
+			$message .= __('After line number', 'mycategoryorder').'&nbsp;<b>'.$line_number.'</b> :<br/>';
+			$message .= '<code>'.str_replace('else','',$searched_line).'</code><br/>';
+			$message .= __('add the following code:', 'mycategoryorder').'<br/>';
+			$message .= '<code>else if ( \'order\' == $orderby ) <br/>&nbsp;&nbsp;&nbsp;&nbsp;$orderby = \'t.term_order\';</code><br/>';
+		}
+	}
+
+if (!empty($message)) {
+			echo '<div id="message" class="updated fade"><p>'.$message.'</p></div>';
+		}
+}
 
 ?>
