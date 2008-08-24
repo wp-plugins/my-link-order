@@ -1,0 +1,201 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: My Link Order\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-24 16:08-0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Andrew <froman118@gmail.com>\n"
+"Language-Team: froman118 <froman118@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\Documents and Settings\\froman\\My Documents\\Wordpress\\My Link Order\\trunk\n"
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:68
+msgid "Order Links for"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:69
+msgid "Order the links by dragging and dropping them into the desired order."
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:77
+msgid "Click to Order Links"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:79
+msgid "Go Back"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:91
+msgid "My Link Order"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:92
+msgid "Choose a category from the drop down to order the links in that category or order the categories by dragging and dropping them."
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:94
+msgid "Order Links"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:102
+msgid "Order Links in this Category"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:104
+msgid "Order Link Categories"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:112
+msgid "Click to Order Categories"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:133
+msgid "Updating Link Category Order..."
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:142
+msgid "Link Categories updated successfully."
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:151
+msgid "Updating Link Order..."
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:160
+msgid "Links updated successfully."
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:228
+msgid "Show Images?"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:230
+msgid "Show Descriptions?"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:232
+msgid "Show Rating?"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:234
+msgid "Show Timestamp?"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:236
+msgid "Uncategorized?"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:238
+msgid "Title (used if Uncategorized is checked):"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:240
+msgid "Between (text between link and description):"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:284
+msgid "Error while writing to the file"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:286
+msgid "File"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:286
+msgid "has been patched successfully"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:291
+msgid "The file"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:291
+msgid "is not writable"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:292
+msgid "You have 2 options"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:293
+msgid "Change the permissions on the file and click on My Link Order again to patch it automatically"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:294
+msgid "Modify the file manually"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:295
+msgid "After line number"
+msgstr ""
+
+#: C:\Documents
+#: and Settings\froman\My Documents\Wordpress\My Link
+#: Order\trunk/mylinkorder.php:297
+msgid "add the following code:"
+msgstr ""
+
