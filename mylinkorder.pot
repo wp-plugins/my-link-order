@@ -1,0 +1,144 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: My Link Order\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-25 11:32+0100\n"
+"PO-Revision-Date: 2008-08-25 11:32+0100\n"
+"Last-Translator: \n"
+"Language-Team: froman118 <froman118@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ./\n"
+"X-Poedit-SearchPath-0: .\n"
+
+
+#: mylinkorder.php:68
+msgid "Order Links for"
+msgstr ""
+
+#: mylinkorder.php:69
+msgid "Order the links by dragging and dropping them into the desired order."
+msgstr ""
+
+#: mylinkorder.php:77
+msgid "Click to Order Links"
+msgstr ""
+
+#: mylinkorder.php:79
+msgid "Go Back"
+msgstr ""
+
+#: mylinkorder.php:91
+msgid "My Link Order"
+msgstr ""
+
+#: mylinkorder.php:92
+msgid "Choose a category from the drop down to order the links in that category or order the categories by dragging and dropping them."
+msgstr ""
+
+#: mylinkorder.php:94
+msgid "Order Links"
+msgstr ""
+
+#: mylinkorder.php:102
+msgid "Order Links in this Category"
+msgstr ""
+
+#: mylinkorder.php:104
+msgid "Order Link Categories"
+msgstr ""
+
+#: mylinkorder.php:112
+msgid "Click to Order Categories"
+msgstr ""
+
+#: mylinkorder.php:133
+msgid "Updating Link Category Order..."
+msgstr ""
+
+#: mylinkorder.php:142
+msgid "Link Categories updated successfully."
+msgstr ""
+
+#: mylinkorder.php:151
+msgid "Updating Link Order..."
+msgstr ""
+
+#: mylinkorder.php:160
+msgid "Links updated successfully."
+msgstr ""
+
+#: mylinkorder.php:228
+msgid "Show Images?"
+msgstr ""
+
+#: mylinkorder.php:230
+msgid "Show Descriptions?"
+msgstr ""
+
+#: mylinkorder.php:232
+msgid "Show Rating?"
+msgstr ""
+
+#: mylinkorder.php:234
+msgid "Show Timestamp?"
+msgstr ""
+
+#: mylinkorder.php:236
+msgid "Uncategorized?"
+msgstr ""
+
+#: mylinkorder.php:238
+msgid "Title (used if Uncategorized is checked):"
+msgstr ""
+
+#: mylinkorder.php:240
+msgid "Between (text between link and description):"
+msgstr ""
+
+#: mylinkorder.php:247
+msgid "Set the order in which links will appear in the sidebar"
+msgstr ""
+
+#: mylinkorder.php:284
+msgid "Error while writing to the file"
+msgstr ""
+
+#: mylinkorder.php:286
+msgid "File"
+msgstr ""
+
+#: mylinkorder.php:286
+msgid "has been patched successfully"
+msgstr ""
+
+#: mylinkorder.php:291
+msgid "The file"
+msgstr ""
+
+#: mylinkorder.php:291
+msgid "is not writable"
+msgstr ""
+
+#: mylinkorder.php:292
+msgid "You have 2 options"
+msgstr ""
+
+#: mylinkorder.php:293
+msgid "Change the permissions on the file and click on My Link Order again to patch it automatically"
+msgstr ""
+
+#: mylinkorder.php:294
+msgid "Modify the file manually"
+msgstr ""
+
+#: mylinkorder.php:295
+msgid "After line number"
+msgstr ""
+
+#: mylinkorder.php:297
+msgid "add the following code:"
+msgstr ""
+
