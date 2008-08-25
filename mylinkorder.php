@@ -243,15 +243,15 @@ else
 <?php
     }
 
-$class['classname'] = 'widget_links';
+mylinkorder_loadtranslation();
+$description = __( 'Set the order in which links will appear in the sidebar','mylinkorder' );
+$widget_ops = array('classname' => 'widget_links', 'description' => $description );
 wp_register_sidebar_widget('mylinkorder', 'My Link Order', 'wp_widget_mylinkorder', $class);
 wp_register_widget_control('mylinkorder', 'My Link Order', 'wp_widget_mylinkorder_control');
 
 }
 
-/* Delays plugin execution until Dynamic Sidebar has loaded first. */
 add_action('plugins_loaded', 'mylinkorder_init');
-add_action('init', 'mylinkorder_loadtranslation');
 
 function mylinkorder_loadtranslation() {
 	load_plugin_textdomain('mylinkorder', PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)), dirname(plugin_basename(__FILE__)));

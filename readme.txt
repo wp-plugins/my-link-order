@@ -4,7 +4,7 @@ Donate link: http://geekyweekly.com/mylinkorder
 Tags: link, category, categories, order, sidebar, widget
 Requires at least: 2.3.2
 Tested up to: 2.6.1
-Stable tag: 2.6.1
+Stable tag: 2.6.1a
 
 My Link Order allows you to set the order in which links and link categories will appear in the sidebar.
 
@@ -15,7 +15,12 @@ and drop interface for ordering. Adds a widget with additional options for easy 
 
 = Change Log =
 
+2.6.1a
+-The plugin has been modified to be fully translated
+-The widget has now a description
+
 2.6.1 - Finally no more taxonomy.php overwriting, well kind of. After you upgrade Wordpress visit the My Link Order page and it will perform the edit automatically. Thanks to Submarine at http://www.category-icons.com for the code. Also added string localization, email me if you are interested in translating.
+
 
 == Installation ==
 
