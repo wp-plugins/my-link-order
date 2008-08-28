@@ -187,10 +187,13 @@ else
 			$b = $options['between'];
 			if($b == '')
 				$b = "\n";
+				
+			$before_widget = preg_replace('/id="[^"]*"/','id="%id"', $before_widget);
 
 			wp_list_bookmarks(array(
 					'orderby' => 'order', 'category_orderby' => 'order',
 					'title_before' => $before_title, 'title_after' => $after_title,
+					'category_before' => $before_widget, 'category_after' => $after_widget,
 					'class' => 'linkcat widget','show_images' => $i, 'between' => $b,
 					'show_description' => $d,'show_rating' => $r,'show_updated' => $u,
 					'categorize' => $c, 'title_li' => $cat_title));
