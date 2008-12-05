@@ -28,7 +28,7 @@ function mylinkorder_js_libs() {
 function mylinkorder_getTarget() {
 	global $wp_version;
 	if (version_compare($wp_version, '2.6.5', '>'))
-		return "link-add.php";
+		return "link-manager.php";
 	else
 		return "edit.php";
 }
