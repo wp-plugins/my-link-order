@@ -3,7 +3,7 @@
 Plugin Name: My Link Order
 Plugin URI: http://www.geekyweekly.com/mylinkorder
 Description: My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes. Visit the My Link Order page after updating Wordpress to apply essential file patches.
-Version: 2.6.1a
+Version: 2.7
 Author: froman118
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
@@ -13,11 +13,24 @@ function mylinkorder_init() {
 
 function mylinkorder_menu()
 {   if (function_exists('add_submenu_page'))
-        add_submenu_page("edit.php", 'My Link Order', 'My Link Order', 5, "mylinkorder", 'mylinkorder');
+        add_submenu_page(mylinkorder_getTarget(), 'My Link Order', 'My Link Order', 5, "mylinkorder", 'mylinkorder');
 }
+
 function mylinkorder_js_libs() {
-  if ( $_GET['page'] == "mylinkorder" )
-	    wp_enqueue_script('scriptaculous');
+	if ( $_GET['page'] == "mylinkorder" ) {
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('jquery-ui-core');
+		wp_enqueue_script('jquery-ui-sortable');
+	}
+}
+
+//Switch page target depending on version
+function mylinkorder_getTarget() {
+	global $wp_version;
+	if (version_compare($wp_version, '2.6.5', '>'))
+		return "link-add.php";
+	else
+		return "edit.php";
 }
 
 add_action('admin_menu', 'mylinkorder_menu');
@@ -28,6 +41,8 @@ function mylinkorder()
 global $wpdb;
 $mode = "";
 $mode = $_GET['mode'];
+$success = "";
+$catID = "";
 
 $query = mysql_query("SHOW COLUMNS FROM $wpdb->terms LIKE 'term_order'") or die(mysql_error());
 
@@ -48,16 +63,21 @@ if($mode == "act_OrderCategories")
 	$result = count($catIDs);
 	for($i = 0; $i <= $result; $i++)
 	{	$wpdb->query("UPDATE $wpdb->terms SET term_order = '$i' WHERE term_id ='$catIDs[$i]'"); }
+	$success = '<div id="message" class="updated fade"><p>'. __('Link Categories updated successfully.', 'mylinkorder').'</p></div>';
 }
-else if($mode == "act_OrderLinks")
+
+if($mode == "act_OrderLinks")
 {
 	$idString = $_GET['idString'];
 	$linkIDs = explode(",", $idString);
 	$result = count($linkIDs);
 	for($i = 0; $i <= $result; $i++)
 	{	$wpdb->query("UPDATE $wpdb->links SET link_order = '$i' WHERE link_id ='$linkIDs[$i]'"); }
+	$success = '<div id="message" class="updated fade"><p>'. __('Links updated successfully.', 'mylinkorder').'</p></div>';
+	$mode = "dsp_OrderLinks";
 }
-else if($mode == "dsp_OrderLinks")
+
+if($mode == "dsp_OrderLinks")
 {
 	$catID = $_GET['catID'];
 	$results=$wpdb->get_results("SELECT * FROM $wpdb->links l inner join $wpdb->term_relationships tr on l.link_id = tr.object_id inner join $wpdb->term_taxonomy tt on tt.term_taxonomy_id = tr.term_taxonomy_id inner join $wpdb->terms t on t.term_id = tt.term_id WHERE t.term_id = $catID ORDER BY link_order ASC");
@@ -66,17 +86,18 @@ else if($mode == "dsp_OrderLinks")
 
 <div class='wrap'>
 	<h2><?php _e('Order Links for', 'mylinkorder') ?> <?=$cat_name?></h2>
+	<?php echo $success; ?>
 	<p><?php _e('Order the links by dragging and dropping them into the desired order.', 'mylinkorder') ?></p>
-	<div id="order" style="width: 500px; margin:10px 10px 10px 0px; padding:10px; border:1px solid #B2B2B2;"><?php
+	<ul id="order" style="width: 500px; margin:10px 10px 10px 0px; padding:10px; border:1px solid #B2B2B2; list-style:none;"><?php
 	foreach($results as $row)
 	{
-		echo "<div id='item_$row->link_id' class='lineitem'>$row->link_name</div>";
+		echo "<li id='$row->link_id' class='lineitem'>$row->link_name</li>";
 	}?>
-	</div>
+	</ul>
 
 	<input type="button" id="orderButton" Value="<?php _e('Click to Order Links', 'mylinkorder') ?>" onclick="javascript:orderLinks();">&nbsp;&nbsp;<strong id="updateText"></strong>
 	<br /><br />
-	<a href='edit.php?page=mylinkorder'><?php _e('Go Back', 'mylinkorder') ?></a>
+	<a href='<?php echo mylinkorder_getTarget(); ?>?page=mylinkorder'><?php _e('Go Back', 'mylinkorder') ?></a>
 
 </div>
 
@@ -87,8 +108,9 @@ else
 	$results=$wpdb->get_results("SELECT DISTINCT t.term_id, name FROM $wpdb->term_taxonomy tt inner join $wpdb->term_relationships tr on tt.term_taxonomy_id = tr.term_taxonomy_id inner join $wpdb->terms t on t.term_id = tt.term_id where taxonomy = 'link_category' ORDER BY t.term_order ASC");
 	?>
 <div class='wrap'>
-	<?php mylinkorder_check_taxonomy_file(); ?>
 	<h2><?php _e('My Link Order', 'mylinkorder') ?></h2>
+	<?php echo $success; ?>
+	<?php mylinkorder_check_taxonomy_file(); ?>
 	<p><?php _e('Choose a category from the drop down to order the links in that category or order the categories by dragging and dropping them.', 'mylinkorder') ?></p>
 
 	<h3><?php _e('Order Links', 'mylinkorder') ?></h3>
@@ -103,71 +125,55 @@ else
 
 	<h3><?php _e('Order Link Categories', 'mylinkorder') ?></h3>
 
-	<div id="order" style="width: 500px; margin:10px 10px 10px 0px; padding:10px; border:1px solid #B2B2B2;"><?php
+	<ul id="order" style="width: 500px; margin:10px 10px 10px 0px; padding:10px; border:1px solid #B2B2B2; list-style:none;"><?php
 	foreach($results as $row)
 	{
-		echo "<div id='item_$row->term_id' class='lineitem'>$row->name</div>";
+		echo "<li id='$row->term_id' class='lineitem'>$row->name</li>";
 	}?>
-	</div>
+	</ul>
 	<input type="button" id="orderButton" Value="<?php _e('Click to Order Categories', 'mylinkorder') ?>" onclick="javascript:orderLinkCats();">&nbsp;&nbsp;<strong id="updateText"></strong>
 </div>
 <?php
 }
 ?>
 <style>
-	div.lineitem {
+	li.lineitem {
 		margin: 3px 0px;
 		padding: 2px 5px 2px 5px;
 		background-color: #F1F1F1;
 		border:1px solid #B2B2B2;
 		cursor: move;
+		width: 490px;
 	}
 </style>
 
 <script language="JavaScript" type="text/javascript">
-	Sortable.create('order',{tag:'div'});
+	jQuery("#order").sortable({ 
+		placeholder: "ui-selected", 
+		revert: false,
+		tolerance: "pointer" 
+	});
 
 	function orderLinkCats() {
-
-		$("orderButton").style.display = "none";
-		$("updateText").innerHTML = "<?php _e('Updating Link Category Order...', 'mylinkorder') ?>";
-		var alerttext = '';
-		var order = Sortable.serialize('order');
-		alerttext = Sortable.sequence('order');
-
-		new Ajax.Request('edit.php?page=mylinkorder&mode=act_OrderCategories&idString='+alerttext, {
-		 onSuccess: function(){
-      			new Effect.Highlight('order', {startcolor:'#F9FC4A', endcolor:'#CFEBF7',restorecolor:'#CFEBF7', duration: 1.5, queue: 'front'})
-				new Effect.Highlight('order', {startcolor:'#CFEBF7', endcolor:'#ffffff',restorecolor:'#ffffff', duration: 1.5, queue: 'end'})
-				$("updateText").innerHTML = "<?php _e('Link Categories updated successfully.', 'mylinkorder') ?>";
-				$("orderButton").style.display = "inline";
-   			 }
-		  });
-		return false;
+		jQuery("#orderButton").css("display", "none");
+		jQuery("#updateText").html("<?php _e('Updating Link Category Order...', 'mylinkorder') ?>");
+		
+		idList = jQuery("#order").sortable("toArray");
+		location.href = '<?php echo mylinkorder_getTarget(); ?>?page=mylinkorder&mode=act_OrderCategories&idString='+idList;
 	}
 
 	function orderLinks() {
-		$("orderButton").style.display = "none";
-		$("updateText").innerHTML = "<?php _e('Updating Link Order...', 'mylinkorder') ?>";
-		var alerttext = '';
-		var order = Sortable.serialize('order');
-		alerttext = Sortable.sequence('order');
-
-		new Ajax.Request('edit.php?page=mylinkorder&mode=act_OrderLinks&idString='+alerttext, {
-		 onSuccess: function(){
-      			new Effect.Highlight('order', {startcolor:'#F9FC4A', endcolor:'#CFEBF7',restorecolor:'#CFEBF7', duration: 1.5, queue: 'front'})
-				new Effect.Highlight('order', {startcolor:'#CFEBF7', endcolor:'#ffffff',restorecolor:'#ffffff', duration: 1.5, queue: 'end'})
-				$("updateText").innerHTML = "<?php _e('Links updated successfully.', 'mylinkorder') ?>";
-				$("orderButton").style.display = "inline";
-   			 }
-		  });
-		return false;
+		jQuery("#orderButton").css("display", "none");
+		jQuery("#updateText").html("<?php _e('Updating Link Order...', 'mylinkorder') ?>");
+		
+		idList = jQuery("#order").sortable("toArray");
+		location.href = '<?php echo mylinkorder_getTarget(); ?>?page=mylinkorder&mode=act_OrderLinks&catID=<?php echo $catID; ?>&idString='+idList;
 	}
 
     function goEdit ()
     {
-		if($("cats").value != "")
-			location.href="edit.php?page=mylinkorder&mode=dsp_OrderLinks&catID="+$("cats").value;
+		if(jQuery("#cats").val() != "")
+			location.href="<?php echo mylinkorder_getTarget(); ?>?page=mylinkorder&mode=dsp_OrderLinks&catID="+jQuery("#cats").val();
 	}
 </script>
 
