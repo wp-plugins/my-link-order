@@ -19,6 +19,7 @@ and drop interface for ordering. Adds a widget with additional options for easy 
 
 * If you're link categories don't show up for ordering your DB user account must have ALTER permissions, the plugin adds columns to store the order
 * Added a call to $wpdb->show_errors(); to help debug any issues
+* Added Spanish translation, thanks Karin
 
 2.7:
 
