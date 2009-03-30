@@ -3,7 +3,7 @@
 Plugin Name: My Link Order
 Plugin URI: http://www.geekyweekly.com/mylinkorder
 Description: My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes. Visit the My Link Order page after updating Wordpress to apply essential file patches.
-Version: 2.7a
+Version: 2.7.1
 Author: froman118
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
@@ -44,15 +44,17 @@ $mode = $_GET['mode'];
 $success = "";
 $catID = "";
 
-$query = mysql_query("SHOW COLUMNS FROM $wpdb->terms LIKE 'term_order'") or die(mysql_error());
+$wpdb->show_errors();
 
-if (mysql_num_rows($query) == 0) {
+$query1 = $wpdb->query("SHOW COLUMNS FROM $wpdb->terms LIKE 'term_order'");
+
+if ($query1 == 0) {
 	$wpdb->query("ALTER TABLE $wpdb->terms ADD `term_order` INT( 4 ) NULL DEFAULT '0'");
 }
 
-$query2 = mysql_query("SHOW COLUMNS FROM $wpdb->links LIKE 'link_order'") or die(mysql_error());
+$query2 = $wpdb->query("SHOW COLUMNS FROM $wpdb->links LIKE 'link_order'");
 
-if (mysql_num_rows($query2) == 0) {
+if ($query2 == 0) {
 	$wpdb->query("ALTER TABLE $wpdb->links ADD `link_order` INT( 4 ) NULL DEFAULT '0'");
 }
 
