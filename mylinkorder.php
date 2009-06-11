@@ -3,7 +3,7 @@
 Plugin Name: My Link Order
 Plugin URI: http://www.geekyweekly.com/mylinkorder
 Description: My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes. Visit the My Link Order page after updating Wordpress to apply essential file patches.
-Version: 2.7.1
+Version: 2.8
 Author: froman118
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
@@ -112,7 +112,10 @@ else
 <div class='wrap'>
 	<h2><?php _e('My Link Order', 'mylinkorder') ?></h2>
 	<?php echo $success; ?>
-	<?php mylinkorder_check_taxonomy_file(); ?>
+	<?php 
+		
+			mylinkorder_check_taxonomy_file(); 
+	?>
 	<p><?php _e('Choose a category from the drop down to order the links in that category or order the categories by dragging and dropping them.', 'mylinkorder') ?></p>
 
 	<h3><?php _e('Order Links', 'mylinkorder') ?></h3>
@@ -150,10 +153,13 @@ else
 </style>
 
 <script language="JavaScript" type="text/javascript">
-	jQuery("#order").sortable({ 
-		placeholder: "ui-selected", 
-		revert: false,
-		tolerance: "pointer" 
+
+	jQuery(document).ready(function(){
+		jQuery("#order").sortable({ 
+			placeholder: "ui-selected", 
+			revert: false,
+			tolerance: "pointer" 
+		});
 	});
 
 	function orderLinkCats() {
@@ -192,6 +198,8 @@ else
 			$u = $options['show_updated'] ? '1' : '0';
 			$c = $options['categorize'] ? '0' : '1';
 			$cat_title = $options['cat_title'];
+			$e = $options['exclude_category'];
+			$include = $options['include_category'];
 			$b = $options['between'];
 			if($b == '')
 				$b = "\n";
@@ -203,8 +211,8 @@ else
 					'title_before' => $before_title, 'title_after' => $after_title,
 					'category_before' => $before_widget, 'category_after' => $after_widget,
 					'class' => 'linkcat widget','show_images' => $i, 'between' => $b,
-					'show_description' => $d,'show_rating' => $r,'show_updated' => $u,
-					'categorize' => $c, 'title_li' => $cat_title));
+					'show_description' => $d,'show_rating' => $r,'show_updated' => $u, 'category' => $include,
+					'categorize' => $c, 'title_li' => $cat_title, 'exclude_category' => $e));
 		}
 
     }
@@ -218,6 +226,8 @@ else
 		$newoptions['show_updated'] = isset($_POST['show_updated']);
 		$newoptions['categorize'] = isset($_POST['categorize']);
 		$newoptions['cat_title'] = strip_tags(stripslashes($_POST['cat_title']));
+		$newoptions['exclude_category'] = strip_tags(stripslashes($_POST['exclude_category']));
+		$newoptions['include_category'] = strip_tags(stripslashes($_POST['include_category']));
 		$newoptions['between'] = addslashes($_POST['between']);
 	}
 	if ( $options != $newoptions ) {
@@ -230,6 +240,8 @@ else
 	$show_updated = $options['show_updated'] ? 'checked="checked"' : '';
 	$categorize = $options['categorize'] ? 'checked="checked"' : '';
 	$cat_title = attribute_escape($options['cat_title']);
+	$exclude_category = attribute_escape($options['exclude_category']);
+	$include_category = attribute_escape($options['include_category']);
 	$between = $options['between'];
 
 ?>
@@ -243,13 +255,17 @@ else
 
 	<p style="text-align:right; float:right;"><label for="show_updated"><?php _e('Show Timestamp?', 'mylinkorder'); ?>&nbsp;<input class="checkbox" type="checkbox" <?php echo $show_updated; ?> id="show_updated" name="show_updated" /></label></p>
 
-		<p style="clear:both; text-align:right;"><label for="categorize"><?php _e('Uncategorized?', 'mylinkorder'); ?>&nbsp;<input class="checkbox" type="checkbox" <?php echo $categorize; ?> id="categorize" name="categorize" /></label></p>
+	<p style="clear:both; text-align:right;"><label for="categorize"><?php _e('Uncategorized?', 'mylinkorder'); ?>&nbsp;<input class="checkbox" type="checkbox" <?php echo $categorize; ?> id="categorize" name="categorize" /></label></p>
 
 	<p style="text-align:right;"><label for="cat_title"><?php _e('Title (used if Uncategorized is checked):', 'mylinkorder'); ?><br /><input style="width: 250px;" id="cat_title" name="cat_title" type="text" value="<?php echo $cat_title; ?>" /></label></p>
 
-		<p style="text-align:right;"><label for="between"><?php _e('Between (text between link and description):', 'mylinkorder'); ?><br /><input style="width: 250px;" id="between" name="between" type="text" value="<?php echo $between; ?>" /></label></p>
+	<p style="text-align:right;"><label for="between"><?php _e('Between (text between link and description):', 'mylinkorder'); ?><br /><input style="width: 250px;" id="between" name="between" type="text" value="<?php echo $between; ?>" /></label></p>
 
-	    <input type="hidden" id="menu-submit" name="menu-submit" value="1" />
+	<p style="text-align:right;"><label for="exclude_category"><?php _e('Exclude Categories (comma-delimited list of IDs):', 'mylinkorder'); ?><br /><input style="width: 250px;" id="exclude_category" name="exclude_category" type="text" value="<?php echo $exclude_category; ?>" /></label></p>
+
+	<p style="text-align:right;"><label for="include_category"><?php _e('Include Categories (comma-delimited list of IDs):', 'mylinkorder'); ?><br /><input style="width: 250px;" id="include_category" name="include_category" type="text" value="<?php echo $include_category; ?>" /></label></p>
+
+	<input type="hidden" id="menu-submit" name="menu-submit" value="1" />
 <?php
     }
 
@@ -275,12 +291,26 @@ function mylinkorder_check_taxonomy_file() {
 	$error = 0;
 	$string = file_get_contents($fullfilename);
 	$line_number = 0;
-	$searched_line = '$orderby = \'t.term_group\';'."\n\t".'else'."\n";
+	
 	$position = 0;
-	$replace = '$orderby = \'t.term_group\';
-	else if ( \'order\' == $orderby )
-		$orderby = \'t.term_order\';'."\n\t".'else'."\n";
+	
+	global $wp_version;
 
+	if (version_compare($wp_version, '2.7.2', '>'))
+	{
+		$searched_line = 'elseif ( empty($_orderby) || \'id\' == $_orderby ) ';
+		$replace = 'else if ( \'order\' == $_orderby )
+			$orderby = \'t.term_order\';'."\n".
+			'elseif ( empty($_orderby) || \'id\' == $_orderby ) ';
+	}
+	else
+	{
+		$searched_line = '$orderby = \'t.term_group\';'."\n\t".'else'."\n";
+		$replace = '$orderby = \'t.term_group\';
+			else if ( \'order\' == $orderby )
+			$orderby = \'t.term_order\';'."\n\t".'else'."\n";
+	}
+	
 	// Search
 	if (strpos($string,'t.term_order')===false) {
 		$position = strpos($string, $searched_line);
