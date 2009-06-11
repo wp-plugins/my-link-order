@@ -298,7 +298,7 @@ function mylinkorder_check_taxonomy_file() {
 
 	if (version_compare($wp_version, '2.7.2', '>'))
 	{
-		$searched_line = 'elseif ( empty($_orderby) || \'id\' == $_orderby ) ';
+		$searched_line = 'elseif ( empty($_orderby) || \'id\' == $_orderby )';
 		$replace = 'else if ( \'order\' == $_orderby )
 			$orderby = \'t.term_order\';'."\n".
 			'elseif ( empty($_orderby) || \'id\' == $_orderby ) ';
