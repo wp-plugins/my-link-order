@@ -3,7 +3,7 @@
 Plugin Name: My Link Order
 Plugin URI: http://www.geekyweekly.com/mylinkorder
 Description: My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes. Visit the My Link Order page after updating Wordpress to apply essential file patches.
-Version: 2.8
+Version: 2.8.3
 Author: froman118
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
@@ -13,7 +13,7 @@ function mylinkorder_init() {
 
 function mylinkorder_menu()
 {   if (function_exists('add_submenu_page'))
-        add_submenu_page(mylinkorder_getTarget(), 'My Link Order', 'My Link Order', 5, "mylinkorder", 'mylinkorder');
+        add_submenu_page(mylinkorder_getTarget(), 'My Link Order', __('My Link Order', 'mylinkorder'), 5, "mylinkorder", 'mylinkorder');
 }
 
 function mylinkorder_js_libs() {
@@ -154,13 +154,15 @@ else
 
 <script language="JavaScript" type="text/javascript">
 
-	jQuery(document).ready(function(){
+	function mylinkorderaddloadevent(){
 		jQuery("#order").sortable({ 
 			placeholder: "ui-selected", 
 			revert: false,
 			tolerance: "pointer" 
 		});
-	});
+	};
+
+	addLoadEvent(mylinkorderaddloadevent);
 
 	function orderLinkCats() {
 		jQuery("#orderButton").css("display", "none");

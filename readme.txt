@@ -3,8 +3,8 @@ Contributors: froman118
 Donate link: http://geekyweekly.com/mylinkorder
 Tags: link, category, categories, order, sidebar, widget
 Requires at least: 2.3.2
-Tested up to: 2.8
-Stable tag: 2.8
+Tested up to: 2.8.3
+Stable tag: 2.8.3
 
 My Link Order allows you to set the order in which links and link categories will appear in the sidebar.
 
@@ -14,6 +14,15 @@ My Link Order allows you to set the order in which links and link categories wil
 and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes.
 
 = Change Log =
+
+2.8.3:
+
+* Trying to fix Javascript onload issues. Settled on using the addLoadEvent function built into Wordpress. If the sorting does not initialize then you have a plugin that is incorrectly overriding the window.onload event. There is nothing I can do to help. 
+* This will also be the last version of this plugin I will release. I am working on a new "2.0" version that will only support WP 2.8 and greater. This jump will finally include the ability to have multiple widgets.
+
+2.8.1:
+
+* Added Czech translation (Jan)
 
 2.8:
 
