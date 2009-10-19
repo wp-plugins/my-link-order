@@ -15,6 +15,10 @@ and drop interface for ordering. Adds a widget with additional options for easy 
 
 = Change Log =
 
+2.8.4:
+
+* Added "Show Names" option to widget to allow link name to be displayed with "Show Images" is selected.
+
 2.8.3:
 
 * Trying to fix Javascript onload issues. Settled on using the addLoadEvent function built into Wordpress. If the sorting does not initialize then you have a plugin that is incorrectly overriding the window.onload event. There is nothing I can do to help. 
