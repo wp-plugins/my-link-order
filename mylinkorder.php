@@ -3,7 +3,7 @@
 Plugin Name: My Link Order
 Plugin URI: http://www.geekyweekly.com/mylinkorder
 Description: My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes. Visit the My Link Order page after updating Wordpress to apply essential file patches.
-Version: 2.8.3
+Version: 2.8.4
 Author: froman118
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
@@ -199,6 +199,7 @@ else
 			$r = $options['show_rating'] ? '1' : '0';
 			$u = $options['show_updated'] ? '1' : '0';
 			$c = $options['categorize'] ? '0' : '1';
+			$show_name = $options['show_name'] ? '1' : '0';
 			$cat_title = $options['cat_title'];
 			$e = $options['exclude_category'];
 			$include = $options['include_category'];
@@ -212,7 +213,7 @@ else
 					'orderby' => 'order', 'category_orderby' => 'order',
 					'title_before' => $before_title, 'title_after' => $after_title,
 					'category_before' => $before_widget, 'category_after' => $after_widget,
-					'class' => 'linkcat widget','show_images' => $i, 'between' => $b,
+					'class' => 'linkcat widget','show_images' => $i, 'between' => $b, 'show_name' => $show_name,
 					'show_description' => $d,'show_rating' => $r,'show_updated' => $u, 'category' => $include,
 					'categorize' => $c, 'title_li' => $cat_title, 'exclude_category' => $e));
 		}
@@ -225,6 +226,7 @@ else
 	    $newoptions['show_images'] = isset($_POST['show_images']);
 	    $newoptions['show_description'] = isset($_POST['show_description']);
 	    $newoptions['show_rating'] = isset($_POST['show_rating']);
+		$newoptions['show_name'] = isset($_POST['show_name']);
 		$newoptions['show_updated'] = isset($_POST['show_updated']);
 		$newoptions['categorize'] = isset($_POST['categorize']);
 		$newoptions['cat_title'] = strip_tags(stripslashes($_POST['cat_title']));
@@ -239,6 +241,7 @@ else
 	$show_images = $options['show_images'] ? 'checked="checked"' : '';
 	$show_description = $options['show_description'] ? 'checked="checked"' : '';
 	$show_rating = $options['show_rating'] ? 'checked="checked"' : '';
+	$show_name = $options['show_name'] ? 'checked="checked"' : '';
 	$show_updated = $options['show_updated'] ? 'checked="checked"' : '';
 	$categorize = $options['categorize'] ? 'checked="checked"' : '';
 	$cat_title = attribute_escape($options['cat_title']);
@@ -252,6 +255,8 @@ else
 	<p style="text-align:left; float:left;"><label for="show_images"><?php _e('Show Images?', 'mylinkorder'); ?>&nbsp;<input class="checkbox" type="checkbox" <?php echo $show_images; ?> id="show_images" name="show_images" /></label></p>
 
 	<p style="text-align:right; float:right;"><label for="show_description"><?php _e('Show Descriptions?', 'mylinkorder'); ?>&nbsp;<input class="checkbox" type="checkbox" <?php echo $show_description; ?> id="show_description" name="show_description" /></label></p>
+
+	<p style="text-align:right; float:right;"><label for="show_name"><?php _e('Show Name?', 'mylinkorder'); ?>&nbsp;<input class="checkbox" type="checkbox" <?php echo $show_name; ?> id="show_name" name="show_name" /></label></p>
 
 	<p style="text-align:left; float:left;"><label for="show_rating"><?php _e('Show Rating?', 'mylinkorder'); ?>&nbsp;<input class="checkbox" type="checkbox" <?php echo $show_rating; ?> id="show_rating" name="show_rating" /></label></p>
 
