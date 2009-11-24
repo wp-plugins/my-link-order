@@ -4,7 +4,7 @@ Donate link: http://geekyweekly.com/gifts-and-donations
 Tags: link, category, categories, order, sidebar, widget
 Requires at least: 2.8
 Tested up to: 2.8.6
-Stable tag: 2.8.6
+Stable tag: 2.8.7
 
 My Link Order allows you to set the order in which links and link categories will appear in the sidebar.
 
@@ -21,6 +21,8 @@ As of version 2.8.6 of the plugin I'm breaking backwards compatibility to add ne
 
 == Changelog ==
 
+= 2.8.7 =
+* Small bug fix on widget's Category Order option
 = 2.8.6 =
 * Significant backend changes, only compatible with 2.8 and above
 * Transitioned to new Widget API, breaking backwards compatibility in the process

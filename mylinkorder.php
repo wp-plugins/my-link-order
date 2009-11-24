@@ -366,11 +366,11 @@ class mylinkorder_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('category_orderby'); ?>"><?php _e( 'Category Order By:', 'mylinkorder' ); ?></label>
 			<select name="<?php echo $this->get_field_name('category_orderby'); ?>" id="<?php echo $this->get_field_id('category_orderby'); ?>" class="widefat">
-				<option value="menu_order"<?php selected( $instance['category_orderby'], 'order' ); ?>><?php _e('Order', 'mylinkorder'); ?></option>
-				<option value="post_title"<?php selected( $instance['category_orderby'], 'name' ); ?>><?php _e('Name', 'mylinkorder'); ?></option>
-				<option value="post_author"<?php selected( $instance['category_orderby'], 'count' ); ?>><?php _e( 'Count', 'mylinkorder' ); ?></option>
+				<option value="order"<?php selected( $instance['category_orderby'], 'order' ); ?>><?php _e('My Order', 'mylinkorder'); ?></option>
+				<option value="name"<?php selected( $instance['category_orderby'], 'name' ); ?>><?php _e('Name', 'mylinkorder'); ?></option>
+				<option value="count"<?php selected( $instance['category_orderby'], 'count' ); ?>><?php _e( 'Count', 'mylinkorder' ); ?></option>
 				<option value="ID"<?php selected( $instance['category_orderby'], 'ID' ); ?>><?php _e( 'ID', 'mylinkorder' ); ?></option>
-				<option value="post_name"<?php selected( $instance['category_orderby'], 'slug' ); ?>><?php _e( 'Slug', 'mylinkorder' ); ?></option>
+				<option value="slug"<?php selected( $instance['category_orderby'], 'slug' ); ?>><?php _e( 'Slug', 'mylinkorder' ); ?></option>
 			</select>
 		</p>
 		<p>
@@ -383,7 +383,7 @@ class mylinkorder_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('orderby'); ?>"><?php _e( 'Link Order By:', 'mylinkorder' ); ?></label>
 			<select name="<?php echo $this->get_field_name('orderby'); ?>" id="<?php echo $this->get_field_id('orderby'); ?>" class="widefat">
-				<option value="order"<?php selected( $instance['orderby'], 'order' ); ?>><?php _e('Order', 'mylinkorder'); ?></option>
+				<option value="order"<?php selected( $instance['orderby'], 'order' ); ?>><?php _e('My Order', 'mylinkorder'); ?></option>
 				<option value="name"<?php selected( $instance['orderby'], 'name' ); ?>><?php _e('Name', 'mylinkorder'); ?></option>
 				<option value="rand"<?php selected( $instance['orderby'], 'rand' ); ?>><?php _e( 'Random', 'mylinkorder' ); ?></option>
 				<option value="description"<?php selected( $instance['orderby'], 'description' ); ?>><?php _e( 'Description' ); ?></option>
