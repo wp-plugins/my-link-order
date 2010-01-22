@@ -3,7 +3,7 @@
 Plugin Name: My Link Order
 Plugin URI: http://www.geekyweekly.com/mylinkorder
 Description: My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes.
-Version: 2.8.7
+Version: 2.9.1
 Author: Andrew Charlton
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
@@ -409,38 +409,38 @@ class mylinkorder_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('exclude_category'); ?>"><?php _e( 'Exclude Category:', 'mylinkorder' ); ?></label> <input type="text" value="<?php echo $exclude_category; ?>" name="<?php echo $this->get_field_name('exclude_category'); ?>" id="<?php echo $this->get_field_id('exclude_category'); ?>" class="widefat" />
 			<br />
-			<small><?php _e( 'Link Category IDs, separated by commas.' ); ?></small>
+			<small><?php _e( 'Link Category IDs, separated by commas.', 'mylinkorder' ); ?></small>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id('category'); ?>"><?php _e( 'Include Category:', 'mylinkorder' ); ?></label> <input type="text" value="<?php echo $category; ?>" name="<?php echo $this->get_field_name('category'); ?>" id="<?php echo $this->get_field_id('category'); ?>" class="widefat" />
 			<br />
-			<small><?php _e( 'Link Category IDs, separated by commas.' ); ?></small>
+			<small><?php _e( 'Link Category IDs, separated by commas.', 'mylinkorder' ); ?></small>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e( 'Exclude Link:', 'mylinkorder' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
 			<br />
-			<small><?php _e( 'Link IDs, separated by commas.' ); ?></small>
+			<small><?php _e( 'Link IDs, separated by commas.', 'mylinkorder' ); ?></small>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id('include'); ?>"><?php _e( 'Include Link:', 'mylinkorder' ); ?></label> <input type="text" value="<?php echo $include; ?>" name="<?php echo $this->get_field_name('include'); ?>" id="<?php echo $this->get_field_id('include'); ?>" class="widefat" />
 			<br />
-			<small><?php _e( 'Link IDs, separated by commas. Use with Include Category.' ); ?></small>
+			<small><?php _e( 'Link IDs, separated by commas. Use with Include Category.', 'mylinkorder' ); ?></small>
 		</p>
 		
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked($instance['categorize'], true) ?> id="<?php echo $this->get_field_id('categorize'); ?>" name="<?php echo $this->get_field_name('categorize'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['categorize'], true) ?> id="<?php echo $this->get_field_id('categorize'); ?>" name="<?php echo $this->get_field_name('categorize'); ?>" />
 			<label for="<?php echo $this->get_field_id('categorize'); ?>"><?php _e('Show Uncategorized', 'mylinkorder'); ?></label><br />
-			<input class="checkbox" type="checkbox" <?php checked($instance['show_images'], true) ?> id="<?php echo $this->get_field_id('show_images'); ?>" name="<?php echo $this->get_field_name('show_images'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['show_images'], true) ?> id="<?php echo $this->get_field_id('show_images'); ?>" name="<?php echo $this->get_field_name('show_images'); ?>" />
 			<label for="<?php echo $this->get_field_id('show_images'); ?>"><?php _e('Show Link Image', 'mylinkorder'); ?></label><br />
-			<input class="checkbox" type="checkbox" <?php checked($instance['show_name'], true) ?> id="<?php echo $this->get_field_id('show_name'); ?>" name="<?php echo $this->get_field_name('show_name'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['show_name'], true) ?> id="<?php echo $this->get_field_id('show_name'); ?>" name="<?php echo $this->get_field_name('show_name'); ?>" />
 			<label for="<?php echo $this->get_field_id('show_name'); ?>"><?php _e('Show Link Name', 'mylinkorder'); ?></label><br />
-			<input class="checkbox" type="checkbox" <?php checked($instance['show_description'], true) ?> id="<?php echo $this->get_field_id('show_description'); ?>" name="<?php echo $this->get_field_name('show_description'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['show_description'], true) ?> id="<?php echo $this->get_field_id('show_description'); ?>" name="<?php echo $this->get_field_name('show_description'); ?>" />
 			<label for="<?php echo $this->get_field_id('show_description'); ?>"><?php _e('Show Link Description', 'mylinkorder'); ?></label><br />
-			<input class="checkbox" type="checkbox" <?php checked($instance['show_rating'], true) ?> id="<?php echo $this->get_field_id('show_rating'); ?>" name="<?php echo $this->get_field_name('show_rating'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['show_rating'], true) ?> id="<?php echo $this->get_field_id('show_rating'); ?>" name="<?php echo $this->get_field_name('show_rating'); ?>" />
 			<label for="<?php echo $this->get_field_id('show_rating'); ?>"><?php _e('Show Link Rating', 'mylinkorder'); ?></label><br />
-			<input class="checkbox" type="checkbox" <?php checked($instance['show_updated'], true) ?> id="<?php echo $this->get_field_id('show_updated'); ?>" name="<?php echo $this->get_field_name('show_updated'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['show_updated'], true) ?> id="<?php echo $this->get_field_id('show_updated'); ?>" name="<?php echo $this->get_field_name('show_updated'); ?>" />
 			<label for="<?php echo $this->get_field_id('show_updated'); ?>"><?php _e('Show Update Date', 'mylinkorder'); ?></label><br />
-			<input class="checkbox" type="checkbox" <?php checked($instance['hide_invisible'], true) ?> id="<?php echo $this->get_field_id('hide_invisible'); ?>" name="<?php echo $this->get_field_name('hide_invisible'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['hide_invisible'], true) ?> id="<?php echo $this->get_field_id('hide_invisible'); ?>" name="<?php echo $this->get_field_name('hide_invisible'); ?>" />
 			<label for="<?php echo $this->get_field_id('hide_invisible'); ?>"><?php _e('Show Invisible', 'mylinkorder'); ?></label><br />
 		</p>
 		<p>
