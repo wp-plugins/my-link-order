@@ -3,8 +3,8 @@ Contributors: froman118
 Donate link: http://geekyweekly.com/gifts-and-donations
 Tags: link, category, categories, order, sidebar, widget
 Requires at least: 2.8
-Tested up to: 2.9.1
-Stable tag: 2.9.1
+Tested up to: 3.1.4
+Stable tag: 3.1.4
 
 My Link Order allows you to set the order in which links and link categories will appear in the sidebar.
 
@@ -13,6 +13,10 @@ My Link Order allows you to set the order in which links and link categories wil
 [My Link Order](http://geekyweekly.com/mylinkorder) allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag 
 and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes.
 
+= Breaking Change Made in 3.1.4 =
+
+If you do not use widgets to display links you must do the following: replace your call to wp_list_bookmarks() with mylinkorder_list_bookmarks().
+
 = Big Update! =
 
 My Link Order has been out since WP 1.5 or 2.0 (2006) and it's been a struggle to keep it working smoothly. The taxonomy.php hack was hideous and a filter finally got added that let me avoid this. No more visiting the My Link Order page after every single Wordpress update!
@@ -20,7 +24,18 @@ My Link Order has been out since WP 1.5 or 2.0 (2006) and it's been a struggle t
 As of version 2.8.6 of the plugin I'm breaking backwards compatibility to add new features like a multiple widget instances. Keep using version [2.8.4](http://downloads.wordpress.org/plugin/my-link-order.2.8.4.zip) if you are not on WP 2.8 yet.
 
 == Changelog ==
-
+= 3.1.4 =
+* The order arguments coming into get_bookmarks() started being matched against a static list of values. To get around this I made copies of wp_list_bookmarks and get_bookmarks and modified them.
+* Widget will work as is after upgrading.
+* If you weren't using widgets then replace your call to wp_list_bookmarks() with mylinkorder_list_bookmarks(). It is exactly the same except it calls my version of get_bookmarks(), mylinkorder_get_bookmarks().
+* The link categories are also matched against a list now, but there is a filter available after that modifies the orderby value.
+= 3.0 =
+* Update for compatibility with 3.0
+* Switched way menu item was being added, any permission issues should be fixed
+* Updated drag and drop to include a placeholder, makes it much easier to see where items will move
+* Updated styles to fit in with Wordpress better
+* Updated page code to use regular submit buttons, less reliance on Javascript and query strings
+* Links and categories now wrapped in localization code, thanks for the tip Florian
 = 2.9.1 =
 * Fixed widget checkboxes not holding their value.
 * Fixed several missing localization strings.
@@ -65,8 +80,8 @@ As of version 2.8.6 of the plugin I'm breaking backwards compatibility to add ne
 1. Install and activate plugin
 2. Go to "My Link Order" under the Links menu and specify your desired order for your link categories and the links in each category
 3. If you are using widgets then replace the standard "Links" widget with the "My Link Order" widget. That's it.
-4. If you aren't using widgets, modify the sidebar template to use the correct filter (additional parameter seperated by ampersands):
-	`wp_list_bookmarks('orderby=order&category_orderby=order');`
+4. If you aren't using widgets, modify your template to use the correct filter (additional parameter seperated by ampersands):
+	`mylinkorder_list_bookmarks('orderby=order&category_orderby=order');`
 
 == Frequently Asked Questions ==
 
