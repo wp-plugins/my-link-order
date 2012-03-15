@@ -3,7 +3,7 @@
 Plugin Name: My Link Order
 Plugin URI: http://www.geekyweekly.com/mylinkorder
 Description: My Link Order allows you to set the order in which links and link categories will appear in the sidebar. Uses a drag and drop interface for ordering. Adds a widget with additional options for easy installation on widgetized themes.
-Version: 3.1.4
+Version: 3.3.1
 Author: Andrew Charlton
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
@@ -308,7 +308,7 @@ class mylinkorder_Widget extends WP_Widget {
 			$instance['category_order'] = 'asc';
 		}
 		
-		if ( in_array( $new_instance['orderby'], array( 'order', 'name', 'rand', 'ID', 'description', 'length', 'notes', 'owner', 'rel', 'rss', 'target', 'updated', 'url' ) ) ) {
+		if ( in_array( $new_instance['orderby'], array( 'order', 'name', 'rand', 'link_id', 'description', 'length', 'notes', 'owner', 'rel', 'rss', 'target', 'updated', 'url' ) ) ) {
 			$instance['orderby'] = $new_instance['orderby'];
 		} else {
 			$instance['orderby'] = 'order';
@@ -390,7 +390,7 @@ class mylinkorder_Widget extends WP_Widget {
 				<option value="rand"<?php selected( $instance['orderby'], 'rand' ); ?>><?php _e( 'Random', 'mylinkorder' ); ?></option>
 				<option value="description"<?php selected( $instance['orderby'], 'description' ); ?>><?php _e( 'Description' ); ?></option>
 				<option value="length"<?php selected( $instance['orderby'], 'length' ); ?>><?php _e( 'Length', 'mylinkorder' ); ?></option>
-				<option value="ID"<?php selected( $instance['orderby'], 'ID' ); ?>><?php _e( 'ID' ); ?></option>
+				<option value="link_id"<?php selected( $instance['orderby'], 'link_id' ); ?>><?php _e( 'ID' ); ?></option>
 				<option value="notes"<?php selected( $instance['orderby'], 'notes' ); ?>><?php _e( 'Notes', 'mylinkorder' ); ?></option>
 				<option value="owner"<?php selected( $instance['orderby'], 'owner' ); ?>><?php _e( 'Owner', 'mylinkorder' ); ?></option>
 				<option value="rel"<?php selected( $instance['orderby'], 'rel' ); ?>><?php _e( 'Relationship (XFN)', 'mylinkorder' ); ?></option>
