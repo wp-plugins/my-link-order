@@ -330,7 +330,7 @@ class mylinkorder_Widget extends WP_Widget {
 	
 	function form( $instance ) {
 		//Defaults
-		$instance = wp_parse_args( (array) $instance, array( 'categorize' => '','category' => '', 'category_orderby' => 'order', 'category_order' => 'asc', '_orderby' => 'order', 'order' => 'asc', 'exclude' => '', 'exclude_category' => '', 'include' => '', 'limit' => '', 'title_li' => '', 'link_before' => '', 'link_after' => '', 'between' => '', 'show_images' => '', 'show_description' => '', 'show_name' => '', 'show_rating' => '', 'show_updated' => '', 'hide_invisible' => '' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'categorize' => '','category' => '', 'category_orderby' => 'order', 'category_order' => 'asc', 'orderby' => 'order', 'order' => 'asc', 'exclude' => '', 'exclude_category' => '', 'include' => '', 'limit' => '', 'title_li' => '', 'link_before' => '', 'link_after' => '', 'between' => '', 'show_images' => '', 'show_description' => '', 'show_name' => '', 'show_rating' => '', 'show_updated' => '', 'hide_invisible' => '' ) );
 		
 		$categorize = esc_attr( $instance['categorize'] );
 		$category = esc_attr( $instance['category'] );
